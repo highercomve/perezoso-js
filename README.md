@@ -72,14 +72,14 @@ Lazy.compose(
 ```js
 import { Lazy } from 'perezoso-js'
 
-var Numbers = () => Lazy.generate(function () {
+var Numbers = Lazy.generate(function () {
   let n = 0
   return {
     next: () => ({ done: false, value: n++ })
   }
 })
 
-const Fibonacci = () => Lazy.generate(function () {
+const Fibonacci = Lazy.generate(function () {
   let n1 = 0
   let n2 = 1
   let value
@@ -113,14 +113,14 @@ rangeFactory(1, 100)
   .value()
 // [ 4, 8, 12, 16, 20, 24, 28, 32, 36, 40 ]
 
-Numbers()
+Numbers
   .map(x => x * 2)
   .filter(x => x % 4 === 0)
   .take(10)
   .value()
 // returns [ 0, 4, 8, 12, 16, 20, 24, 28, 32, 36 ]
 
-Fibonacci()
+Fibonacci
   .map(x => x * 2)
   .filter(x => x % 4 === 0)
   .take(10)
