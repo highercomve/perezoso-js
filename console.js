@@ -6,7 +6,7 @@ var historyFile = path.join(__dirname, '.node_history')
 
 // Load all modules in src
 function loadVariables () {
-  const AllJsFilesPattern = path.join(__dirname, './src/**/*.js')
+  const AllJsFilesPattern = path.join(__dirname, './lib/**/*.js')
   const allSrcFiles = glob.sync(AllJsFilesPattern)
   return allSrcFiles.reduce(function (contextSum, file) {
     const module = path.basename(file, '.js')
