@@ -91,10 +91,18 @@ const Fibonacci = Lazy.generate(function () {
   }
 })
 
-Numbers.map(x => x * 2).filter(x => x % 4 === 0).take(10).value()
+Numbers
+  .map(x => x * 2)
+  .filter(x => x % 4 === 0)
+  .take(10)
+  .value()
 // returns [ 0, 4, 8, 12, 16, 20, 24, 28, 32, 36 ]
 
-Fibonacci.map(x => x * 2).filter(x => x % 4 === 0).take(10).value()
+Fibonacci
+  .map(x => x * 2)
+  .filter(x => x % 4 === 0)
+  .take(10)
+  .value()
  // returns 0, 4, 16, 68, 288, 1220, 5168, 21892, 92736, 392836 ]
 
 ```
