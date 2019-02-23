@@ -8,11 +8,18 @@ function arrayOfNumbers (n) {
   return array
 }
 
-const array = arrayOfNumbers(1000000000000000)
+const array = arrayOfNumbers(100000)
 
-while (true) {
+let i = 0
+while (i < 1000) {
+  i++
   array
     .map(x => x * x)
     .filter(x => x % 2 === 0)
-    .reduce(0, (acc, x) => acc + x)  
+    .reduce((acc, x) => acc + x)
+}
+
+const used = process.memoryUsage()
+for (let key in used) {
+  console.log(`${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB`)
 }

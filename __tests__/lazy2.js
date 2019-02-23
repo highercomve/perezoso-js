@@ -1,15 +1,16 @@
-const { Lazy } = require('../lib/perezoso')
+const { LazyArray } = require('../lib/perezoso')
 
-const Numbers = Lazy.generate(function () {
-  let n = 0
-  return {
-    next () {
-      return { value: n++ }
-    }
+function arrayOfNumbers (n) {
+  const array = new LazyArray()
+  let i = 0
+  while (i < n) {
+    array.push(i)
+    i++
   }
-})
+  return array
+}
 
-const lazyArray = Numbers.take(100000)
+const lazyArray = arrayOfNumbers(100000)
 
 let i = 0
 while (i < 1000) {
