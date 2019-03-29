@@ -1,4 +1,4 @@
-const { LazyArray } = require('../lib/perezoso')
+const { Lazy } = require('../lib/perezoso')
 
 describe.skip('Perezoso', () => {
   it('array does not leak when doing stuff', () => {

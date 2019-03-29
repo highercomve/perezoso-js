@@ -1,21 +1,11 @@
 Perezoso JS
 ==========================================
 
-This is an experiment for Lazy evaluation of map, reduce, filter over enumerables.
+This library expose a series of methods like any array methods but using enumerators
 
-The library exports all the methods of Object Lazy.
+We have to forms of using it 
 
-The lazy will have all the methods that and has and overwritten all this:
-
-- value(): returns and array from the enumerable
-- map(fn): returns another enumerable with the map function
-- reduce(fn, seed): returns the result of the reduce process, not a enumerable
-- filter(fn): filter true the enumerables
-- find(fn): return and element of the enumerable after find it
-- first(): return the first element of the enumerable
-- rest(): return the rest of the enumerable
-- until(fn): iterate over and interator until the fn.call returns false
-- take(n): return N elements of the enumerable starting from 0 to N
+One if using everything as functions or using and object Lazy
 
 ### How to use it
 
@@ -45,25 +35,14 @@ or could be used in a functional way (but we don't have pipeline operator yet)
 (https://github.com/tc39/proposal-pipeline-operator)[https://github.com/tc39/proposal-pipeline-operator]
 
 ```js
-import { value, filter, map, compose } from 'perezoso-js'
+import { value, filter, map, compose } from 'perezoso-js/functional'
 
-value(
-  filter(
-    x => x % 3 === 0, 
-    map(
-      x => x * x,
-      [1, 2, 3, 4, 5, 6]
-    )
-  )
-)
-// returns [ 9, 36 ]
-
-// or you could do it using compose
 compose(
-  map.bind(null, x => x * x),
-  filter.bind(null, x => x % 3 === 0),
+  map(x => x * x),
+  filter(x => x % 3 === 0),
   value
 )([1, 2, 3, 4, 5, 6])
+
 // returns [ 9, 36 ]
 ```
 
@@ -72,7 +51,7 @@ compose(
 ```js
 import { generate } from 'perezoso-js'
 
-var Numbers = generate(function () {
+const Numbers = generate(function () {
   let n = 0
   return {
     next: () => ({ done: false, value: n++ })
