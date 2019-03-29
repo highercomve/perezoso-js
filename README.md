@@ -1,28 +1,28 @@
 Perezoso JS
 ==========================================
 
-This is an experiment over iterators for Lazy evaluation of map, reduce, filter over iterators.
+This is an experiment for Lazy evaluation of map, reduce, filter over enumerables.
 
-The library have and Object that extends from Array called LazyArray and a module of functions called Lazy
+The library exports all the methods of Object Lazy.
 
-The lazy array will have all the methods that and array has and overwritten all this:
+The lazy will have all the methods that and has and overwritten all this:
 
-- value(): returns and array from the iterator
-- map(fn): returns another iterator with the map function
-- reduce(fn, seed): returns the result of the reduce process, not a iterator
-- filter(fn): filter true the iterators
-- find(fn): return and element of the iterator after find it
-- first(): return the first element of the iterator
-- rest(): return the rest of the iterator
+- value(): returns and array from the enumerable
+- map(fn): returns another enumerable with the map function
+- reduce(fn, seed): returns the result of the reduce process, not a enumerable
+- filter(fn): filter true the enumerables
+- find(fn): return and element of the enumerable after find it
+- first(): return the first element of the enumerable
+- rest(): return the rest of the enumerable
 - until(fn): iterate over and interator until the fn.call returns false
-- take(n): return N elements of the iterator starting from 0 to N
+- take(n): return N elements of the enumerable starting from 0 to N
 
 ### How to use it
 
 ```js
-import { LazyArray } from 'perezoso-js'
+import { Lazy } from 'perezoso-js'
 
-var lazy = new LazyArray(1,2,3,4,5)
+var lazy = new Lazy(1,2,3,4,5)
 
 lazy
   .map(x => x * x) // this will return an iterable with the map values
@@ -31,7 +31,7 @@ lazy
 // returns [ 9, 36 ]
 
 // OR
-var lazy2 = LazyArray.from([1,2,3,4,5,6])
+var lazy2 = Lazy.from([1,2,3,4,5,6])
 
 lazy2
   .map(x => x * x)
@@ -45,12 +45,12 @@ or could be used in a functional way (but we don't have pipeline operator yet)
 (https://github.com/tc39/proposal-pipeline-operator)[https://github.com/tc39/proposal-pipeline-operator]
 
 ```js
-import { Lazy } from 'perezoso-js'
+import { value, filter, map, compose } from 'perezoso-js'
 
-Lazy.value(
-  Lazy.filter(
+value(
+  filter(
     x => x % 3 === 0, 
-    Lazy.map(
+    map(
       x => x * x,
       [1, 2, 3, 4, 5, 6]
     )
@@ -59,10 +59,10 @@ Lazy.value(
 // returns [ 9, 36 ]
 
 // or you could do it using compose
-Lazy.compose(
-  Lazy.map.bind(null, x => x * x),
-  Lazy.filter.bind(null, x => x % 3 === 0),
-  Lazy.value
+compose(
+  map.bind(null, x => x * x),
+  filter.bind(null, x => x % 3 === 0),
+  value
 )([1, 2, 3, 4, 5, 6])
 // returns [ 9, 36 ]
 ```
@@ -70,16 +70,16 @@ Lazy.compose(
 ### You could create an Infinite iterator and use Lazy to do operations over
 
 ```js
-import { Lazy } from 'perezoso-js'
+import { generate } from 'perezoso-js'
 
-var Numbers = Lazy.generate(function () {
+var Numbers = generate(function () {
   let n = 0
   return {
     next: () => ({ done: false, value: n++ })
   }
 })
 
-const Fibonacci = Lazy.generate(function () {
+const Fibonacci = generate(function () {
   let n1 = 0
   let n2 = 1
   let value
@@ -92,7 +92,7 @@ const Fibonacci = Lazy.generate(function () {
 })
 
 const rangeFactory = (from, to = Infinity, step = 1) => {
-  return Lazy.generate(function () {
+  return generate(function () {
     let done = false
     let value = 0
     return {
