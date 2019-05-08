@@ -1,6 +1,6 @@
 {
   "name": "perezoso-js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Create lazyness for iterable objects in javascript",
   "repository": "https://github.com/highercomve/perezoso-js",
   "author": "Sergio Marin",
