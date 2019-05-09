@@ -1,7 +1,12 @@
-const { Lazy } = require('../lib/perezoso')
+const {
+  compose,
+  map,
+  filter,
+  reduce
+} = require('../lib/functional')
 
 function arrayOfNumbers (n) {
-  const array = new Lazy()
+  const array = []
   let i = 0
   while (i < n) {
     array.push(i)
@@ -10,15 +15,18 @@ function arrayOfNumbers (n) {
   return array
 }
 
-const lazyArray = arrayOfNumbers(100000)
+const values = arrayOfNumbers(100000)
+
+const procesor = compose(
+  map(x => x * x),
+  filter(x => x % 2 === 0),
+  reduce((acc, x) => acc + x)
+)
 
 let i = 0
 while (i < 1000) {
   i++
-  lazyArray
-    .map(x => x * x)
-    .filter(x => x % 2 === 0)
-    .reduce((acc, x) => acc + x)
+  procesor(values)
 }
 
 const used = process.memoryUsage()

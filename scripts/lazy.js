@@ -1,6 +1,6 @@
-const { Lazy } = require('../lib/perezoso')
+const { generate } = require('../lib/perezoso')
 
-const Numbers = Lazy.generate(function () {
+const Numbers = generate(function () {
   let n = 0
   return {
     next () {
