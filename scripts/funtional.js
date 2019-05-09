@@ -20,7 +20,7 @@ const values = arrayOfNumbers(100000)
 const procesor = compose(
   map(x => x * x),
   filter(x => x % 2 === 0),
-  reduce((acc, x) => acc + x)
+  reduce((acc, x) => acc + x, 0)
 )
 
 let i = 0

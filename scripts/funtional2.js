@@ -14,14 +14,14 @@ const Numbers = generate(function () {
       return { value: n++ }
     }
   }
-})
+}, undefined)
 
 const values = take(100000, Numbers)
 
 const procesor = compose(
   map(x => x * x),
   filter(x => x % 2 === 0),
-  reduce((acc, x) => acc + x)
+  reduce((acc, x) => acc + x, 0)
 )
 
 let i = 0

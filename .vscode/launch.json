@@ -7,6 +7,13 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Current File",
+      "program": "${workspaceFolder}/${relativeFile}",
+      "cwd": "${workspaceRoot}",
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Current Debug Tests",
       "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
       "cwd": "${workspaceRoot}",
