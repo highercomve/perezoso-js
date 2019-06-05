@@ -1,3 +1,5 @@
+[![Codeship Status for highercomve/perezoso-js](https://app.codeship.com/projects/7a30a1f0-69eb-0137-1d6a-3699c784bbf0/status?branch=master)](https://app.codeship.com/projects/346251)
+
 Perezoso JS
 ==========================================
 
