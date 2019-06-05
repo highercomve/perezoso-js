@@ -2597,6 +2597,11 @@ lodash.camelcase@^4.3.0:
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
   integrity sha1-soqmKIorn8ZRA1x3EfZathkDMaY=
 
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/lodash.get/-/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
+
 lodash.omit@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.omit/-/lodash.omit-4.5.0.tgz#6eb19ae5a1ee1dd9df0b969e66ce0b7fa30b5e60"
@@ -4251,6 +4256,13 @@ uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
+
+valida-js@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/valida-js/-/valida-js-0.0.5.tgz#79e994a70732612bb4bea519547c2d216337cef8"
+  integrity sha512-wRsN3JxSSKxzv/Y2HNpbXjNUZx0QXO9pNyEoIL+XPsIUX2L/CrfOTJ/IzI7/HgW41App+O9G2FDhmYhS25ZEcQ==
+  dependencies:
+    lodash.get "^4.4.2"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"

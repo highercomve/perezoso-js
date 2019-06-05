@@ -37,5 +37,7 @@
     "leakage": "^0.4.0",
     "repl.history": "^0.1.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "valida-js": "^0.0.5"
+  }
 }
